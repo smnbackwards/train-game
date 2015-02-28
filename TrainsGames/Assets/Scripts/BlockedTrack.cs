@@ -4,7 +4,7 @@ using System.Collections;
 public class BlockedTrack : MonoBehaviour
 {
     public GameObject straightTrack;
-    public int damage = 5;
+    public const int damage = 20;
     public int score = 10;
     void OnTriggerEnter2D(Collider2D collider)
     {

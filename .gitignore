@@ -8,6 +8,8 @@
 *.unityproj
 *.sln
 *.suo
+*.ide*
+*.sln.ide*
 *.tmp
 *.user
 *.userprefs

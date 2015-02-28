@@ -60,7 +60,7 @@ public class TrainController : MonoBehaviour
         BlockedTrack track = collider.gameObject.GetComponent<BlockedTrack>();
         if (track != null)
         {
-            PlayerHealth.TakeDamage(10);
+            PlayerHealth.TakeDamage(BlockedTrack.damage);
             track.Destroy();
         }
 

@@ -54,6 +54,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   straightTrack: {fileID: 166572, guid: da3e715c1c5fa774eb44092571fac477, type: 2}
+  damage: 20
+  score: 10
 --- !u!114 &11468802
 MonoBehaviour:
   m_ObjectHideFlags: 1
