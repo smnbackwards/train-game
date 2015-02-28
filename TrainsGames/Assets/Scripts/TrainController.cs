@@ -24,6 +24,7 @@ public class TrainController : MonoBehaviour
     {
         var p = GetComponentInChildren<ParticleSystem>();
         p.renderer.sortingLayerName = "Foreground";
+        transform.position = new Vector3( Mathf.FloorToInt(numberOfTracks / 2),transform.position.y,0);
         currentTrack = Mathf.CeilToInt(transform.position.x);
     }
 
@@ -38,14 +39,24 @@ public class TrainController : MonoBehaviour
         speed = baseSpeed + extraSpeed ;
         Debug.Log(speed);
 
-        gun.transform.Rotate(Vector3.forward, -Input.GetAxis("Turret") * Time.deltaTime * 300);
+        float x = Input.GetAxis("TurretH");
+        float y = Input.GetAxis("TurretV");
+        if (x != 0 || y != 0)
+        {
+            Vector3 directionVector = new Vector3(x, y, 0);
+            float r = -Mathf.Rad2Deg * Mathf.Atan2(y, x) - 90;
+            gun.transform.rotation = Quaternion.Euler(0, 0, r);
+        }
+
+
+        //gun.transform.Rotate(Vector3.forward, -Input.GetAxis("Turret") * Time.deltaTime * 300);
         if (cooldown < COOLDOWN)
             cooldown += Time.deltaTime;
         if (cooldown >= COOLDOWN)
         {
 
             int move = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
-            if (move != 0 && move + currentTrack < 5 && move + currentTrack >= 0)
+            if (move != 0 && move + currentTrack < numberOfTracks && move + currentTrack >= 0)
             {
                 currentTrack = currentTrack + move;
                 //transform.position += new Vector3(move,0,0);

@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1338997845}
-  numberOfTracks: 5
+  numberOfTracks: 9
   baseSpeed: 2
 --- !u!50 &426068614
 Rigidbody2D:
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   brokenTrack: {fileID: 157502, guid: 2e2e4a6a8c4282343a3427cc027df203, type: 2}
   blockedTrack: {fileID: 147514, guid: 739353891a0b2a74187d2a182a57645b, type: 2}
   train: {fileID: 426068610}
-  numberOfTracks: 5
+  numberOfTracks: 9
 --- !u!4 &2085423110
 Transform:
   m_ObjectHideFlags: 0
