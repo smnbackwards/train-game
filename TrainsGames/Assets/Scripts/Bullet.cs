@@ -4,15 +4,15 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
     public int damage;
-    public int speed;
+    public float speed = 1;
+    public Vector3 rotation;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private Vector3 movement;
+
+    void Update()
+    {
+        movement = speed *  transform.up;
+        Debug.Log("Moving?" + movement);
+        transform.position += movement * Time.deltaTime;
+    }
 }

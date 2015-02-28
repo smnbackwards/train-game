@@ -8,16 +8,17 @@ public class TrainController : MonoBehaviour
     public int numberOfTracks = 5;
 
 
-    public int currentTrack { get { return Mathf.CeilToInt(transform.position.x); } }
+    int currentTrack;
 
     // Use this for initialization
     void Start()
     {
         var p = GetComponentInChildren<ParticleSystem>();
         p.renderer.sortingLayerName = "Foreground";
+        currentTrack = Mathf.CeilToInt(transform.position.x);
     }
 
-    const float COOLDOWN = 0.2f;
+    const float COOLDOWN = 0.4f;
     float cooldown = COOLDOWN;
     // Update is called once per frame
     void Update()
@@ -28,14 +29,16 @@ public class TrainController : MonoBehaviour
             cooldown += Time.deltaTime;
         if (cooldown >= COOLDOWN)
         {
+
             int move = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
-            Debug.Log(Input.GetAxis("Horizontal"));
-            if ( move != 0 && move + currentTrack < 5 && move + currentTrack >= 0)
+            if (move != 0 && move + currentTrack < 5 && move + currentTrack >= 0)
             {
-                transform.position += new Vector3(move,0,0);
+                currentTrack = currentTrack + move;
+                //transform.position += new Vector3(move,0,0);
                 cooldown = 0;
             }
         }
+        transform.position = Vector3.Lerp(transform.position, new Vector3(currentTrack, transform.position.y),  10*Time.deltaTime);
 
 
     }
