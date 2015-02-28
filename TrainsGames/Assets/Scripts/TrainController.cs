@@ -6,9 +6,16 @@ public class TrainController : MonoBehaviour
 
     public GameObject gun;
     public int numberOfTracks = 5;
+    public float speed = 1.5f;
 
+    PlayerHealth PlayerHealth;
 
     int currentTrack;
+
+    void Awake()
+    {
+        PlayerHealth = GetComponentInChildren<PlayerHealth>();
+    }
 
     // Use this for initialization
     void Start()
@@ -45,7 +52,18 @@ public class TrainController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidbody2D.velocity = new Vector2(0, 1);
+        rigidbody2D.velocity = new Vector2(0, speed);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        BlockedTrack track = collider.gameObject.GetComponent<BlockedTrack>();
+        if (track != null)
+        {
+            PlayerHealth.TakeDamage(10);
+            track.Destroy();
+        }
+
     }
 }
 

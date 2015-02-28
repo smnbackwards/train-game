@@ -9,6 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 447514}
   - 212: {fileID: 21247514}
+  - 114: {fileID: 11468802}
+  - 114: {fileID: 11465476}
+  - 61: {fileID: 6126546}
   m_Layer: 0
   m_Name: tracksBlocked
   m_TagString: Untagged
@@ -23,11 +26,45 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 9.43972778, y: 21.3420982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6126546
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147514}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: .5, y: .5}
+  m_Center: {x: 0, y: .170000002}
+--- !u!114 &11465476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b1ee5aae52471459638bf3a4b88826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  straightTrack: {fileID: 166572, guid: da3e715c1c5fa774eb44092571fac477, type: 2}
+--- !u!114 &11468802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27253209feb7c746a4f2c339e3027a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21247514
 SpriteRenderer:
   m_ObjectHideFlags: 1

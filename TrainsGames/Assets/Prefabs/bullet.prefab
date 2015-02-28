@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21222090}
   - 114: {fileID: 11403604}
   - 114: {fileID: 11403602}
+  - 61: {fileID: 6192410}
+  - 50: {fileID: 5031126}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -25,11 +27,37 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .839212239, y: -2.42287445, z: 0}
+  m_LocalPosition: {x: 9.73337555, y: 20.6355667, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5031126
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122090}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!61 &6192410
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122090}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: .200000003, y: .200000003}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11403602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77f1a5669830c1409bd1e19b6f9cdcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 5
+  lifespan: 1.20000005
   dies: 1
 --- !u!212 &21222090
 SpriteRenderer:
