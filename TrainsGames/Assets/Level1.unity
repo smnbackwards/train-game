@@ -320,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 1338997845}
   numberOfTracks: 5
-  speed: 1.5
+  baseSpeed: 2
 --- !u!50 &426068614
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .5, y: 4}
+  m_Size: {x: .5, y: 3}
   m_Center: {x: 0, y: -1}
 --- !u!114 &426068616
 MonoBehaviour:
@@ -364,6 +364,7 @@ MonoBehaviour:
   damageImage: {fileID: 874332735}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
+  boom: {fileID: 184222, guid: 222db0aaffb74b547a58c42cceedd628, type: 2}
 --- !u!1 &506726099
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,9 +693,9 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: dc2e9c4753bffbd429434e23adad5717, type: 3}
     m_FontSize: 20
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -893,9 +894,9 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: dc2e9c4753bffbd429434e23adad5717, type: 3}
     m_FontSize: 30
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1035,7 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .543769062, g: .772058845, b: .455248475, a: 0}
+  m_Color: {r: .0797667131, g: .118353993, b: .161764681, a: 0}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1087,7 +1088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429168, guid: 162367d676f2d734681d7449a1e654aa, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21229168, guid: 162367d676f2d734681d7449a1e654aa, type: 2}
       propertyPath: m_Enabled
@@ -1533,7 +1534,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
@@ -1541,7 +1542,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 8421504
         key2:
           serializedVersion: 2
           rgba: 0
@@ -1561,14 +1562,14 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime1: 21203
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 42405
         atime1: 65535
         atime2: 0
         atime3: 0
@@ -1576,7 +1577,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
         key0:
@@ -2489,6 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 426068616}
+  player: {fileID: 0}
 --- !u!1 &2085423108
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class GameOver : MonoBehaviour
 {
 
     public PlayerHealth playerHealth;
+    public GameObject player;
 
     Animator anim;
     bool gameOver = false;
@@ -20,8 +21,6 @@ public class GameOver : MonoBehaviour
 
     }
 
-
-    float cooldown = 2;
     bool down = true;
     // Update is called once per frame
     void Update()
@@ -35,15 +34,13 @@ public class GameOver : MonoBehaviour
 
         if (gameOver)
         {
-            if (cooldown > 0)
-                cooldown -= Time.deltaTime;
 
             if (Input.GetAxis("Fire1") == 0 && Input.GetAxis("Fire2") == 0)
                 down = false;
 
             if (Input.GetAxis("Fire1") != 0 || Input.GetAxis("Fire2") != 0)
             {
-                if (cooldown <= 0 && !down)
+                if (!down)
                     Application.LoadLevel(Application.loadedLevel);
             }
         }

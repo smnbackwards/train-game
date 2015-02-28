@@ -11,8 +11,7 @@ public class Bullet : MonoBehaviour {
 
     void Update()
     {
-        movement = speed *  transform.up;
-        Debug.Log("Moving?" + movement);
+        movement = (speed) * transform.up + Vector3.up * TrainController.speed;
         transform.position += movement * Time.deltaTime;
     }
 }

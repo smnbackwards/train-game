@@ -30,6 +30,7 @@ public class Gun : MonoBehaviour {
             {
                 shot.gameObject.transform.position = transform.position;
                 shot.transform.rotation = transform.parent.transform.rotation;
+                
                 fire = false;
             }
         }
