@@ -12,6 +12,11 @@ public class PoolObject : MonoBehaviour {
 
     public void Update()
     {
+        if (Camera.main == null)
+        {
+            Deactivate();
+            return;
+        }
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPosition.y > Screen.height || screenPosition.y < 0
             || screenPosition.x > Screen.width || screenPosition.x < 0)

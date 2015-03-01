@@ -470,7 +470,7 @@ MonoBehaviour:
   startingWater: 100
   waterLevel: 100
   waterGauge: {fileID: 592820903}
-  boom: {fileID: 0}
+  boom: {fileID: 184222, guid: 222db0aaffb74b547a58c42cceedd628, type: 2}
 --- !u!1 &438767682
 GameObject:
   m_ObjectHideFlags: 0

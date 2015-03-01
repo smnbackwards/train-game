@@ -92,7 +92,7 @@ public class LevelGenerator : MonoBehaviour
 
     void generateStation()
     {
-        buildStation(numberOfTracks + 4, currentpos + numberOfTracks/2);
+        buildStation(currentpos + numberOfTracks/2);
 
     }
 
@@ -134,9 +134,17 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(health, new Vector3(x, y, 0), Quaternion.identity);
     }
 
-    void buildStation(int x, int y)
+    void buildStation(int y)
     {
-        Instantiate(station, new Vector3(x, y, 0), Quaternion.identity);
+        int r = Random.Range(0, 2);
+        if (r == 0)
+            Instantiate(station, new Vector3(numberOfTracks + 4, y, 0), Quaternion.identity);
+        else
+        {
+            GameObject s = (GameObject)Instantiate(station, new Vector3(-5, y, 0), Quaternion.identity);
+            s.transform.localScale = new Vector3(-1, 1, 1);
+            Debug.Log("Building a station on the left");
+        }
     }
 
 }

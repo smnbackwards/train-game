@@ -85,7 +85,7 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         Instantiate(boom, transform.position, transform.rotation);
-        playerMovement.enabled = false;
+        this.gameObject.SetActive(false);
         var guns = GetComponentsInChildren<Gun>();
         foreach (var gun in guns)
         {

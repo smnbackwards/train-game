@@ -12,6 +12,8 @@ public class KillOffScreen : MonoBehaviour
 
     void Update()
     {
+        if (Camera.main == null)
+            return;
         if ( transform.position.y < Camera.main.transform.position.y -10)
             Destroy(this.gameObject);
     }

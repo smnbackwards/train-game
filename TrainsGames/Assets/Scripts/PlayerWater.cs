@@ -54,7 +54,7 @@ public class PlayerWater : MonoBehaviour {
     {
         isDead = true;
         Instantiate(boom, transform.position, transform.rotation);
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
         var guns = GetComponentsInChildren<Gun>();
         foreach (var gun in guns)
         {

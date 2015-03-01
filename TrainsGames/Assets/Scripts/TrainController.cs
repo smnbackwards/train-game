@@ -79,10 +79,10 @@ public class TrainController : MonoBehaviour
         if (d > currentDistance)
         {
             Score.increaseScore(d - currentDistance);
+            PlayerWater.loseWater((d-currentDistance)/5.0f);
             currentDistance = d;
         }
 
-        PlayerWater.loseWater(Time.deltaTime / 2.0f);
     }
 
     void FixedUpdate()
