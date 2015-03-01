@@ -3998,6 +3998,7 @@ MonoBehaviour:
   blockedTrack: {fileID: 147514, guid: 739353891a0b2a74187d2a182a57645b, type: 2}
   health: {fileID: 102316, guid: b14cc49881fefbb4399b695268c514eb, type: 2}
   station: {fileID: 108246, guid: 040fe09c6aaae6e4bbe74e455aebdc4a, type: 2}
+  sign: {fileID: 195084, guid: f23d831bc5a5469439e45d4343689150, type: 2}
   train: {fileID: 426068610}
   numberOfTracks: 9
 --- !u!4 &2085423110

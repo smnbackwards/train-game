@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject blockedTrack;
     public GameObject health;
     public GameObject station;
+    public GameObject sign;
 
     public GameObject train;
 
@@ -31,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
         currentpos = trackSize;
     }
 
+    bool right = false;
     // Update is called once per frame
     void Update()
     {
@@ -38,9 +40,16 @@ public class LevelGenerator : MonoBehaviour
         {
             generateTracks();
             if (Mathf.FloorToInt(currentpos + 20) % 100 == 0)
-                Debug.Log("Town Coming");
+            {
+                right = 0 == Random.Range(0, 2);
+                buildSign(right ? numberOfTracks + 3 : -5, currentpos, generateTownName());
+            }
             if(Mathf.FloorToInt(currentpos) % 100 == 0)
-                generateStation();
+            {
+                buildStation(right, currentpos + numberOfTracks / 2);
+            }
+
+
 
             currentpos += trackSize;
         }
@@ -90,11 +99,6 @@ public class LevelGenerator : MonoBehaviour
         b = count > 0;
     }
 
-    void generateStation()
-    {
-        buildStation(currentpos + numberOfTracks/2);
-
-    }
 
     void buildStraightTracks(int x, int y)
     {
@@ -134,17 +138,40 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(health, new Vector3(x, y, 0), Quaternion.identity);
     }
 
-    void buildStation(int y)
+    void buildStation(bool right, int y)
     {
-        int r = Random.Range(0, 2);
-        if (r == 0)
+        if (right)
             Instantiate(station, new Vector3(numberOfTracks + 4, y, 0), Quaternion.identity);
         else
         {
             GameObject s = (GameObject)Instantiate(station, new Vector3(-5, y, 0), Quaternion.identity);
             s.transform.localScale = new Vector3(-1, 1, 1);
-            Debug.Log("Building a station on the left");
         }
+    }
+
+    void buildSign(int x, int y, string name)
+    {
+        GameObject s = (GameObject)Instantiate(sign, new Vector3(x, y, 0), Quaternion.identity);
+        UnityEngine.UI.Text t = s.GetComponentInChildren<UnityEngine.UI.Text>();
+        t.text = name;
+    }
+
+
+    string[] preNames = new string[] { "North", "South", "East", "West", "New", "Old" };
+    string[] Names1 = new string[] { "San", "Santa", "El", "Rio", "Los" };
+    string[] Names2 = new string[] { "Francisco", "Cruz", "Marin", "Dorado", "Clara", "Diego" , "Grande"};
+
+    string[] postNames = new string[] { " County", "ville", " Hills", " Town", "Bay", "City" };
+
+    public string generateTownName()
+    {
+        string pre = preNames[ Random.Range(0, preNames.Length) ];
+        string name1 = Names1[ Random.Range(0, Names1.Length) ];
+        string name2 = Names2[ Random.Range(0, Names2.Length) ];
+        string post = postNames[ Random.Range(0, postNames.Length) ];
+
+
+        return string.Format("{0} {1} {2}{3}",pre,name1,name2,post);
     }
 
 }
