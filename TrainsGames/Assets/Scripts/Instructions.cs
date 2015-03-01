@@ -10,6 +10,8 @@ public class Instructions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        if (Input.GetAxis("Fire1") != 0 || Input.GetAxis("Fire2") != 0)
+            Application.LoadLevel(1);
 	}
 }
