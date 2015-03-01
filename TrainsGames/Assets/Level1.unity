@@ -491,7 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 1338997845}
   numberOfTracks: 9
-  baseSpeed: 2
+  baseSpeed: 4
   maxSpeed: 10
   speedGauge: {fileID: 1943914489}
 --- !u!50 &426068614

@@ -194,9 +194,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Instructions:\n\n\u2022Stay on the Tracks\n\u2022Break Barriers\n\u2022Collect
-    water at towns\n\nShoot - Triggers\nMove - Left Stick\nTurret - Right Stick\n\n-Shoot
-    to start-"
+  m_Text: "Instructions:\n\n\u2022Stay on the Tracks - 1 point\n\u2022Break Barriers
+    - 10 points\n\u2022Collect water at towns\n\nShoot - Triggers\nMove - Left Stick\nTurret
+    - Right Stick\n\n-Shoot to start-"
 --- !u!222 &1166628133
 CanvasRenderer:
   m_ObjectHideFlags: 0
