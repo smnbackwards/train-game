@@ -5,6 +5,7 @@ public class GameOver : MonoBehaviour
 {
 
     public PlayerHealth playerHealth;
+    public PlayerWater playerWater;
     public GameObject player;
 
     Animator anim;
@@ -26,7 +27,7 @@ public class GameOver : MonoBehaviour
     void Update()
     {
 
-        if (playerHealth.currentHealth <= 0)
+        if (playerHealth.currentHealth <= 0 || playerWater.waterLevel <= 0)
         {
             anim.SetTrigger("GameOver");
             gameOver = true;

@@ -7,6 +7,7 @@ public class PlayerWater : MonoBehaviour {
     public float waterLevel;
     public Gauge waterGauge;
     public GameObject boom;
+    public Animator HUD;
 
 
     TrainController playerMovement;
@@ -20,7 +21,7 @@ public class PlayerWater : MonoBehaviour {
     }
 
 
-
+    bool warned = false;
     public void loseWater(float amount)
     {
         if (amount <= 0)
@@ -28,6 +29,17 @@ public class PlayerWater : MonoBehaviour {
         waterLevel -= amount;
 
         waterGauge.value = startingWater - waterLevel;
+
+        if(waterLevel <= 20 && !warned)
+        {
+            HUD.SetTrigger("LowWater");
+            warned = true;
+        }
+        else
+        {
+            HUD.ResetTrigger("LowWater");
+        }
+
         if (waterLevel <= 0 && !isDead)
         {
             Death();
@@ -47,6 +59,7 @@ public class PlayerWater : MonoBehaviour {
         waterLevel = Mathf.Min(waterLevel, startingWater);
 
         waterGauge.value = startingWater - waterLevel;
+        warned = false;
     }
 
 

@@ -8,12 +8,13 @@ public class TurretController : MonoBehaviour
     public Gun rightGun;
 
     public Gauge gunGauge;
+    public Animator HUD;
 
     float gunCooldown = 0;
 
     const float coolDownMultiplier = 1.0f;
     const float overheatCoolDownMultiplier = 5f;
-    const float heatUpMultiplier = 3.0f;
+    const float heatUpMultiplier = 2.0f;
 
     bool overheated = false;
 
@@ -39,6 +40,8 @@ public class TurretController : MonoBehaviour
             {
                 gunCooldown = 0;
                 overheated = false;
+                HUD.ResetTrigger("Overheated");
+                HUD.SetTrigger("Normal");
             }
         }
         else
@@ -62,6 +65,10 @@ public class TurretController : MonoBehaviour
             }
             overheated = gunCooldown >= gunGauge.maxValue;
         }
+
+        if(overheated)
+            HUD.SetTrigger("Overheated");
+
 
         gunCooldown = Mathf.Min(gunGauge.maxValue, gunCooldown);
         gunCooldown = Mathf.Max(0, gunCooldown);

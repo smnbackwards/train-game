@@ -6,7 +6,7 @@ public class TrainController : MonoBehaviour
 
     public GameObject gun;
     public int numberOfTracks = 5;
-    public float baseSpeed = 1.7f;
+    public float baseSpeed = 4f;
     float extraSpeed = 0;
     public static float speed = 1.5f;
     public float maxSpeed = 12;
