@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
     public Text text;
-    public static int score = 0;
+    private static int score = 0;
 
     void Awake()
     {
@@ -23,4 +23,9 @@ public class Score : MonoBehaviour {
 
         text.text = "Score: " + score;
 	}
+
+    public static void increaseScore(int amount)
+    {
+        score += amount;
+    }
 }

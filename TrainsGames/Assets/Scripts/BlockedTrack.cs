@@ -13,7 +13,7 @@ public class BlockedTrack : MonoBehaviour
         {
             collider.gameObject.GetComponent<PoolObject>().Deactivate();
             Destroy();
-            Score.score += score;
+            Score.increaseScore(score);
         }
 
     }

@@ -6,7 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;                         
     public int currentHealth;                                
-    public Slider healthSlider;                              
+    public Slider healthSlider;
+    public Gauge healthGauge;                             
     public Image damageImage;                                
     public float flashSpeed = 5f;                            
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
@@ -55,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
 
         // Set the health bar's value to the current health.
         healthSlider.value = currentHealth;
+        healthGauge.value = currentHealth;
         if (currentHealth <= 0 && !isDead)
         {
             Death();

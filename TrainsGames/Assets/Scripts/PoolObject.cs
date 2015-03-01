@@ -9,7 +9,17 @@ public class PoolObject : MonoBehaviour {
 	void Start () {
         Kill();
 	}
-	
+
+    public void Update()
+    {
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if (screenPosition.y > Screen.height || screenPosition.y < 0
+            || screenPosition.x > Screen.width || screenPosition.x < 0)
+        {
+            Deactivate();
+        }
+    }
+
     public void Activate()
     {
         gameObject.SetActive(true);

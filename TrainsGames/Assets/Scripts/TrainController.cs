@@ -6,13 +6,16 @@ public class TrainController : MonoBehaviour
 
     public GameObject gun;
     public int numberOfTracks = 5;
-    public float baseSpeed = 2;
+    public float baseSpeed = 1.7f;
     float extraSpeed = 0;
     public static float speed = 1.5f;
+
+    public Gauge speedGauge;
 
     PlayerHealth PlayerHealth;
 
     int currentTrack;
+    int currentDistance = 0;
 
     void Awake()
     {
@@ -37,6 +40,7 @@ public class TrainController : MonoBehaviour
         if (s > extraSpeed)
             extraSpeed = s;
         speed = baseSpeed + extraSpeed ;
+        speedGauge.value = speed;
         Debug.Log(speed);
 
         float x = Input.GetAxis("TurretH");
@@ -65,6 +69,12 @@ public class TrainController : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, new Vector3(currentTrack, transform.position.y),  10*Time.deltaTime);
 
+        int d = Mathf.FloorToInt(transform.position.y);
+        if ( d > currentDistance)
+        {
+            Score.increaseScore( d-currentDistance);
+            currentDistance = d;
+        }
 
     }
 
