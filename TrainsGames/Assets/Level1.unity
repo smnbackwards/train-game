@@ -163,7 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets: {fileID: 57084774}
   offset: {x: 0, y: 1, z: 0}
-  axis: Fire2
 --- !u!1 &301455764
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +348,7 @@ GameObject:
   - 61: {fileID: 426068615}
   - 114: {fileID: 426068616}
   - 114: {fileID: 426068617}
+  - 114: {fileID: 426068618}
   m_Layer: 0
   m_Name: train
   m_TagString: Untagged
@@ -471,6 +471,20 @@ MonoBehaviour:
   waterLevel: 100
   waterGauge: {fileID: 592820903}
   boom: {fileID: 184222, guid: 222db0aaffb74b547a58c42cceedd628, type: 2}
+--- !u!114 &426068618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426068610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc351a7c85647545bcc65c027fb6e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftGun: {fileID: 1340377727}
+  rightGun: {fileID: 57084775}
+  gunGauge: {fileID: 1834505490}
 --- !u!1 &438767682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,8 +1804,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1755, y: 987}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1324782220
 MonoBehaviour:
@@ -1808,12 +1822,12 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc2e9c4753bffbd429434e23adad5717, type: 3}
-    m_FontSize: 20
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 8
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1958,7 +1972,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets: {fileID: 1340377726}
   offset: {x: 0, y: 1, z: 0}
-  axis: Fire1
 --- !u!1 &1386038106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,10 +2066,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1568158239}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 200}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1445047745
 MonoBehaviour:
@@ -2073,7 +2086,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FontData:
     m_Font: {fileID: 12800000, guid: dc2e9c4753bffbd429434e23adad5717, type: 3}
-    m_FontSize: 30
+    m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10

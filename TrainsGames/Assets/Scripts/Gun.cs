@@ -5,7 +5,6 @@ public class Gun : MonoBehaviour {
 
     public ObjectPool bullets;
     public Vector3 offset = new Vector3(0, 1, 0);
-    public string axis = "Fire";
 
     float fireRate = 0.1f;
     bool fire = false;
@@ -14,13 +13,12 @@ public class Gun : MonoBehaviour {
 	void Start () {
         InvokeRepeating("Fire", 0, fireRate);
     }
+
+    public void setFire(bool fire)
+    {
+        this.fire = fire;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-
-        fire = Input.GetAxis(axis) != 0;
-	}
-
     void Fire()
     {
         if (fire)
