@@ -9,10 +9,12 @@ public class TrainController : MonoBehaviour
     public float baseSpeed = 1.7f;
     float extraSpeed = 0;
     public static float speed = 1.5f;
+    public float maxSpeed = 12;
 
     public Gauge speedGauge;
 
     PlayerHealth PlayerHealth;
+    PlayerWater PlayerWater;
 
     int currentTrack;
     int currentDistance = 0;
@@ -20,6 +22,7 @@ public class TrainController : MonoBehaviour
     void Awake()
     {
         PlayerHealth = GetComponentInChildren<PlayerHealth>();
+        PlayerWater = GetComponentInChildren<PlayerWater>();
     }
 
     // Use this for initialization
@@ -27,7 +30,7 @@ public class TrainController : MonoBehaviour
     {
         var p = GetComponentInChildren<ParticleSystem>();
         p.renderer.sortingLayerName = "Foreground";
-        transform.position = new Vector3( Mathf.FloorToInt(numberOfTracks / 2),transform.position.y,0);
+        transform.position = new Vector3(Mathf.FloorToInt(numberOfTracks / 2), transform.position.y, 0);
         currentTrack = Mathf.CeilToInt(transform.position.x);
     }
 
@@ -36,12 +39,9 @@ public class TrainController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float s = Mathf.Min(5, Mathf.Floor(transform.position.y / 50));
-        if (s > extraSpeed)
-            extraSpeed = s;
-        speed = baseSpeed + extraSpeed ;
+        extraSpeed += Time.deltaTime / 15; ;
+        speed = Mathf.Min(maxSpeed, baseSpeed + extraSpeed);
         speedGauge.value = speed;
-        Debug.Log(speed);
 
         float x = Input.GetAxis("TurretH");
         float y = Input.GetAxis("TurretV");
@@ -54,12 +54,12 @@ public class TrainController : MonoBehaviour
 
 
         //gun.transform.Rotate(Vector3.forward, -Input.GetAxis("Turret") * Time.deltaTime * 300);
+        int move = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
         if (cooldown < COOLDOWN)
             cooldown += Time.deltaTime;
         if (cooldown >= COOLDOWN)
         {
 
-            int move = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (move != 0 && move + currentTrack < numberOfTracks && move + currentTrack >= 0)
             {
                 currentTrack = currentTrack + move;
@@ -67,15 +67,22 @@ public class TrainController : MonoBehaviour
                 cooldown = 0;
             }
         }
-        transform.position = Vector3.Lerp(transform.position, new Vector3(currentTrack, transform.position.y),  10*Time.deltaTime);
+
+        if (move == 0)
+        {
+            cooldown = COOLDOWN;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(currentTrack, transform.position.y), 3 * speed * Time.deltaTime);
 
         int d = Mathf.FloorToInt(transform.position.y);
-        if ( d > currentDistance)
+        if (d > currentDistance)
         {
-            Score.increaseScore( d-currentDistance);
+            Score.increaseScore(d - currentDistance);
             currentDistance = d;
         }
 
+        PlayerWater.loseWater(Time.deltaTime / 2.0f);
     }
 
     void FixedUpdate()
@@ -96,6 +103,18 @@ public class TrainController : MonoBehaviour
         if (broken != null)
         {
             PlayerHealth.TakeDamage(PlayerHealth.currentHealth);
+        }
+
+        if (collider.tag == "Health")
+        {
+            PlayerHealth.GainHealth(10);
+            Destroy(collider.gameObject);
+        }
+
+        if (collider.tag == "Station")
+        {
+            PlayerWater.fillWater();
+            collider.gameObject.collider2D.enabled = false;
         }
 
     }

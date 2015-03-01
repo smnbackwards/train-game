@@ -48,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (amount <= 0)
+            return;
         // Set the damaged flag so the screen will flash.
         damaged = true;
 
@@ -56,11 +58,26 @@ public class PlayerHealth : MonoBehaviour
 
         // Set the health bar's value to the current health.
         healthSlider.value = currentHealth;
-        healthGauge.value = currentHealth;
+        healthGauge.value = startingHealth - currentHealth;
         if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
+    }
+
+    public void GainHealth(int amount)
+    {
+        if (amount <= 0 || isDead)
+            return;
+        // Set the damaged flag so the screen will flash.
+
+        // Reduce the current health by the damage amount.
+        currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, startingHealth);
+
+        // Set the health bar's value to the current health.
+        healthSlider.value = currentHealth;
+        healthGauge.value = startingHealth - currentHealth;
     }
 
 

@@ -7,6 +7,8 @@ public class LevelGenerator : MonoBehaviour
     public GameObject straightTrack;
     public GameObject brokenTrack;
     public GameObject blockedTrack;
+    public GameObject health;
+    public GameObject station;
 
     public GameObject train;
 
@@ -32,9 +34,14 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (train.transform.position.y >= currentpos - 2 * trackSize)
+        if (train.transform.position.y >= currentpos - 3 * trackSize)
         {
             generateTracks();
+            if (Mathf.FloorToInt(currentpos + 20) % 100 == 0)
+                Debug.Log("Town Coming");
+            if(Mathf.FloorToInt(currentpos) % 100 == 0)
+                generateStation();
+
             currentpos += trackSize;
         }
 
@@ -47,11 +54,19 @@ public class LevelGenerator : MonoBehaviour
     void generateTracks()
     {
         int count = 0;
+        int healthCount = 0;
+
         for (int i = 0; i < numberOfTracks; i++)
         {
             int r = Random.Range(0, 5);
             if (r < 3)
             {
+                int health = Random.Range(0, 15);
+                if (health == 0 && healthCount < 2)
+                {
+                    buildHealth(i, currentpos);
+                    healthCount++;
+                }
                 buildStraightTracks(i, currentpos);
             }
             else if (r < 4)
@@ -62,7 +77,9 @@ public class LevelGenerator : MonoBehaviour
             {
                 //Don't build broken tracks twice in a row
                 if (broken[i] || count > numberOfTracks / 2 || b)
+                {
                     buildBlockedTrack(i, currentpos);
+                }
                 else
                 {
                     buildBrokenTrack(i, currentpos);
@@ -71,6 +88,12 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         b = count > 0;
+    }
+
+    void generateStation()
+    {
+        buildStation(numberOfTracks + 4, currentpos + numberOfTracks/2);
+
     }
 
     void buildStraightTracks(int x, int y)
@@ -104,6 +127,16 @@ public class LevelGenerator : MonoBehaviour
             Instantiate(straightTrack, new Vector3(x, y + j, 0), Quaternion.identity);
         }
         broken[x] = false;
+    }
+
+    void buildHealth(int x, int y)
+    {
+        Instantiate(health, new Vector3(x, y, 0), Quaternion.identity);
+    }
+
+    void buildStation(int x, int y)
+    {
+        Instantiate(station, new Vector3(x, y, 0), Quaternion.identity);
     }
 
 }
